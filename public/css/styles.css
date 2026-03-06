@@ -5,6 +5,23 @@
   box-sizing: border-box;
 }
 
+.navigation {
+}
+.navigation ul{
+  /* grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr; */
+  /* width: 100%; */
+  display: flex;
+  list-style: none;
+}
+
+.navigation a {
+    /* display: block; */
+    padding: .85rem 10px;
+    color: white;
+    background-color: rgb(5, 5, 56);
+    text-decoration: none;
+}
+
 .add {
   float: left;
   position: absolute;
@@ -25,7 +42,6 @@ body {
   background-size: cover;
 }
 #wrapper {
-  max-width: 800px;
   padding: 25px;
   margin-top: 15px;
   margin-left: 50px;
