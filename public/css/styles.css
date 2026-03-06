@@ -4,3 +4,35 @@
 *:after {
   box-sizing: border-box;
 }
+
+.add {
+  float: left;
+  position: absolute;
+  top: 230px;
+}
+
+
+#tools {
+  float: right;
+}
+
+.addButton {
+  padding: 5px;
+}
+
+body {
+  background-color: aqua;
+  background-size: cover;
+}
+#wrapper {
+  max-width: 800px;
+  padding: 25px;
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: aliceblue;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+}
