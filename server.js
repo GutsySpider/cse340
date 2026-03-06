@@ -22,6 +22,10 @@ app.set("layout", "./laouts/layout");
  * Routes
  *************************/
 app.use(static);
+// Index route
+app.get("/", function (req, res) {
+  res.render("index", {title: "Home"})
+})
 
 /* ***********************
  * Local Server Information
