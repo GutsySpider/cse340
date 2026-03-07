@@ -102,7 +102,7 @@
   grid-template-columns: 1fr;
   align-items: center;
   width: 180px;
-  background-color: rgb(54, 138, 235);
+  background-color: #0F0FFF;
 }
 #upgrades div a {
   color: white;
