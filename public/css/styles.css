@@ -104,6 +104,9 @@
   width: 180px;
   background-color: rgb(54, 138, 235);
 }
+#upgrades div a {
+  color: white;
+}
 
 #reviews {
   order:1
