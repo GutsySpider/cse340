@@ -4,5 +4,46 @@
         max-width: 900px;
         margin: 0 auto;
     }
+    body {
+        background-image: url("/images/site/small_check.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .deloreanCard {
+        width: 250px;
+        font-size: 20px;
+        padding: 10px;
+        color: rgb(54, 138, 235);
+        float: left;
+        position: absolute;
+        top: 270px;
+        background-color: rgba(232, 232, 244, 0.799);
+    }
+
+    #wrapper {
+        padding: 25px;
+        margin: 15px auto;
+        max-width: 900px;
+        background-color: aliceblue;
+        border: 5px solid cadetblue;
+        border-radius: 10px;
+        }
+   .carInfo {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 30px;
+       margin-top: 40px;
+   }
+
+   #upgrades {
+    order:1
+   }
+
+   #reviews {
+    order:2
+   }
+
     
+
 }

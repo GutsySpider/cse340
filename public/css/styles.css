@@ -4,51 +4,113 @@
 *:after {
   box-sizing: border-box;
 }
+#top-header {
+  padding-bottom: 20px;
+}
 
-.navigation {
+#tools a {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName a{
+  text-decoration: none;
+  color: black;
+  font-size: 22px;
 }
 .navigation ul{
-  /* grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr; */
-  /* width: 100%; */
+  justify-content: space-between;
   display: flex;
   list-style: none;
+  margin: 13px;
 }
 
+.navigation {
+  background-color: rgb(5, 5, 56);
+  padding: 1px;
+}
+
+
+
 .navigation a {
-    /* display: block; */
     padding: .85rem 10px;
     color: white;
     background-color: rgb(5, 5, 56);
     text-decoration: none;
 }
 
-.add {
+.deloreanCard{
+  width: 170px;
+  font-size: 12px;
+  padding: 10px;
+  color: rgb(54, 138, 235);
   float: left;
   position: absolute;
-  top: 230px;
+  top: 180px;
+  background-color: rgba(232, 232, 244, 0.799);
 }
 
+.deloreanCard h2 {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.deloreanCard img {
+  padding: 15px;
+}
+#delorean-ad ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 15px;
+}
+
+#upgrades li{
+  display: flex;
+}
 
 #tools {
   float: right;
 }
 
-.addButton {
-  padding: 5px;
+#wrapper {
+  border: none;
 }
 
-body {
-  background-color: aqua;
-  background-size: cover;
-}
-#wrapper {
-  padding: 25px;
-  margin-top: 15px;
-  margin-left: 50px;
-  margin-right: 50px;
-  background-color: aliceblue;
-}
 .hero img {
   width: 100%;
   height: 100%;
+}
+
+.carInfo {
+  
+  display: flex;
+  flex-direction: column;
+ }
+
+#upgrades {
+  align-items: center;
+  order:2
+}
+#upgrades div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 10px;
+}
+#upgrades div div{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  width: 180px;
+  background-color: #0F0FFF;
+}
+#upgrades div a {
+  color: white;
+}
+
+#reviews {
+  order:1
+}
+#reviews p{
+  font-size: 20px;
 }
