@@ -1,0 +1,33 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<div class="vehicle-card">
+
+  <!-- Vehicle Image -->
+  <img 
+    src="<%= inv.inv_image %>" 
+    alt="Image of <%= inv.inv_make %> <%= inv.inv_model %>" 
+    class="vehicle-image"
+  />
+
+  <!-- Vehicle Info -->
+  <div class="vehicle-info">
+
+    <h2><%= inv.inv_make %> <%= inv.inv_model %> Details</h2>
+
+    <p><strong>Price:</strong> 
+      $<%= new Intl.NumberFormat("en-US").format(inv.inv_price) %>
+    </p>
+
+    <p><strong>Description:</strong> <%= inv.inv_description %></p>
+
+    <p><strong>Color:</strong> <%= inv.inv_color %></p>
+
+    <p><strong>Miles:</strong> 
+      <%= new Intl.NumberFormat("en-US").format(inv.inv_miles) %>
+    </p>
+
+  </div>
+
+</div>

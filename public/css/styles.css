@@ -22,7 +22,8 @@
   justify-content: space-between;
   display: flex;
   list-style: none;
-  margin: 13px;
+  margin: 10px;
+  padding-left: 0;
 }
 
 .navigation {
@@ -30,13 +31,14 @@
   padding: 1px;
 }
 
-
-
 .navigation a {
     padding: .85rem 10px;
     color: white;
-    background-color: rgb(5, 5, 56);
     text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
 }
 
 .deloreanCard{
@@ -113,4 +115,88 @@
 }
 #reviews p{
   font-size: 20px;
+}
+
+/* *********ITEM VIEW*********** */
+
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.vehicle-card {
+  gap: 2rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  align-items: flex-start;
+}
+
+
+.vehicle-image {
+  width: 350px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.vehicle-info h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.vehicle-info p {
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.4;
+} */
+
+.details-link:hover {
+  background: #005fa3;
+}
+
+/* Classification Grid */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+#inv-display li {
+  list-style: none;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform .2s ease;
+}
+
+#inv-display li:hover {
+  transform: translateY(-4px);
+}
+
+#inv-display img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.namePrice {
+  margin-top: .75rem;
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}
+
+.namePrice span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0077cc;
 }

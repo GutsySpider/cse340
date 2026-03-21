@@ -1,9 +1,15 @@
-// Needed Resources 
 const express = require("express")
-const router = new express.Router() 
+const router = new express.Router()
 const invController = require("../controllers/invController")
+const itemController = require("../controllers/itemController")
 
-// Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+// Classification route
+router.get("/type/:classificationId", invController.buildByClassificationId)
 
-module.exports = router;
+// Item detail route
+router.get("/detail/:inv_id", itemController.buildByInventoryId)
+
+// Intentional 500 error route
+router.get("/cause-error", itemController.throwError)
+
+module.exports = router
