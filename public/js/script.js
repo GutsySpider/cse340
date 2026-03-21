@@ -116,6 +116,9 @@ function displayReviews() {
 }
 
 //DISPLAY ITEMS
-displayDeloreanAd();
-displayUpgrades();
-displayReviews();
+if (document.body.id === "home") {
+  displayDeloreanAd();
+  displayUpgrades();
+  displayReviews();
+}
+
