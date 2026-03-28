@@ -158,7 +158,85 @@ nav ul li a:hover {
 .details-link:hover {
   background: #005fa3;
 }
+/* Login View */
+/* LOGIN PAGE ONLY — scoped to #login */
+#login main {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
 
+#login h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+#login .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#login .login-form label {
+  font-weight: bold;
+  color: #444;
+}
+
+#login .login-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+#login .login-form input:focus {
+  border-color: #2a6fdb;
+  outline: none;
+}
+
+#login .btn-submit {
+  padding: 12px;
+  background: #2a6fdb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#login .btn-submit:hover {
+  background: #1f56ad;
+  transform: translateY(-2px);
+}
+
+#login .btn-submit:active {
+  background: #17407f;
+  transform: translateY(0);
+}
+
+#login .register-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+#login .register-link a {
+  color: #2a6fdb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#login .register-link a:hover {
+  text-decoration: underline;
+}
 /* Classification Grid */
 #inv-display {
   display: grid;
