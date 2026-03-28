@@ -16,7 +16,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities/");
 const accountRoute = require("./routes/accountRoute")
-
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
@@ -31,6 +31,9 @@ const accountRoute = require("./routes/accountRoute")
   saveUninitialized: true,
   name: 'sessionId',
  }))
+
+ app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 
  // Express Messages Middleware
@@ -62,7 +65,7 @@ app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 
 // Account Routes
-app.use("/account", accountRoute)
+app.use("/account", require("./routes/accountRoute"))
 
 // // Item Routes
 // app.use("/inv/col", itemRoute)

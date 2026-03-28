@@ -122,3 +122,12 @@ if (document.body.id === "home") {
   displayReviews();
 }
 
+//PASSWORD TOGGLE
+const passwordInput = document.querySelector('input[name="account_password"]');
+const toggleBtn = document.getElementById('togglePassword');
+
+toggleBtn.addEventListener('click', () => {
+  const isHidden = passwordInput.type === 'password';
+  passwordInput.type = isHidden ? 'text' : 'password';
+  toggleBtn.textContent = isHidden ? 'Hide' : 'Show';
+});

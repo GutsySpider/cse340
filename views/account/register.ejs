@@ -5,14 +5,34 @@
         </h1>
 
         <%- messages() %>
-        <form id="login-form" action="/account/login" method="post">
-            <label for="accountEmail">
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+        <form id="register-form" acton="/account/register" method="post">
+        
+            <label>
+                First Name <span class="required">*</span>
+                <input type="text" name="account_firstname" required autocomplete="given-name" title="Your First Name">
+            </label>
+        
+            <label>
+                Last Name <span class="required">*</span>
+                <input type="text" name="account_lastname" required autocomplete="family-name" title="Your Last Name">
+            </label>
+        
+            <label>
                 Email <span class="required">*</span>
                 <input type="email" name="account_email" required placeholder="john89@gmail.com" title="Your Email"
                     autocomplete="email">
             </label>
         
-            <label for="accountPassword">
+            <label>
                 Password <span class="required">*</span>
                 <div class="password-wrapper">
                     <input type="password" name="account_password" id="account_password" required title="Your Password"
@@ -20,7 +40,7 @@
                     <button type="button" id="togglePassword" class="toggle-btn">Show</button>
                 </div>
             </label>
-            
+        
             <div class="password-rules">
                 <p><strong>Password must:</strong></p>
                 <ul>
@@ -29,13 +49,10 @@
                     <li>Contain at least 1 number</li>
                     <li>Contain at least 1 special character</li>
                 </ul>
+            </div>
         
-            <button type="submit" class="btn-submit">Login</button>
+            <input type="submit" value="Create Your Account">
+        
         </form>
-        
-        <p class="register-link">
-            Don't have an account?
-            <a href="/account/register">Register here</a>
-        </p>
     </main>
 </body>
