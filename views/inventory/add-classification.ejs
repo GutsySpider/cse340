@@ -1,0 +1,34 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+
+        <% messages() %>
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+
+    <form id="add-classification-form" acton="/inv/add-classification" method="post">
+
+        <div class="classification-rules">
+            <p><strong>MUST BE ALPHEBETICAL CHARACTERS NO SPACES</strong></p>
+        
+        </div>
+        <label>
+            Classification Name <span class="required">*</span>
+            <div class="add-classification-wrapper">
+                <input type="text" name="classification_name" id="classification_name" required title="No spaces or special characters allowed"
+                    autocomplete="new-classification" pattern="^[A-Za-z0-9]+$">
+            </div>
+        </label>
+    
+        <input type="submit" value="Add Classification">
+    
+    </form>

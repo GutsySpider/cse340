@@ -4,6 +4,8 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* Header */
 #top-header {
   padding-bottom: 20px;
 }
@@ -13,12 +15,19 @@
   color: black;
 }
 
-.siteName a{
+.siteName a {
   text-decoration: none;
   color: black;
   font-size: 22px;
 }
-.navigation ul{
+
+/* Navigation */
+.navigation {
+  background-color: rgb(5, 5, 56);
+  padding: 1px;
+}
+
+.navigation ul {
   justify-content: space-between;
   display: flex;
   list-style: none;
@@ -26,22 +35,18 @@
   padding-left: 0;
 }
 
-.navigation {
-  background-color: rgb(5, 5, 56);
-  padding: 1px;
-}
-
 .navigation a {
-    padding: .85rem 10px;
-    color: white;
-    text-decoration: none;
+  padding: .85rem 10px;
+  color: white;
+  text-decoration: none;
 }
 
 nav ul li a:hover {
   text-decoration: underline;
 }
 
-.deloreanCard{
+/* Delorean legacy styles */
+.deloreanCard {
   width: 170px;
   font-size: 12px;
   padding: 10px;
@@ -60,13 +65,15 @@ nav ul li a:hover {
 .deloreanCard img {
   padding: 15px;
 }
+
 #delorean-ad ul {
   list-style: none;
   margin: 0;
   padding-left: 15px;
 }
 
-#upgrades li{
+/* Upgrades */
+#upgrades li {
   display: flex;
 }
 
@@ -84,40 +91,123 @@ nav ul li a:hover {
 }
 
 .carInfo {
-  
   display: flex;
   flex-direction: column;
- }
+}
 
 #upgrades {
   align-items: center;
-  order:2
+  order: 2;
 }
+
 #upgrades div {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   gap: 10px;
 }
-#upgrades div div{
+
+#upgrades div div {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   width: 180px;
   background-color: #0F0FFF;
 }
+
 #upgrades div a {
   color: white;
 }
 
 #reviews {
-  order:1
+  order: 1;
 }
-#reviews p{
+
+#reviews p {
   font-size: 20px;
 }
 
-/* Registration View */
+/* ---------------------------
+   ADD INVENTORY FORM
+----------------------------*/
+#add-inventory-form {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+#add-inventory-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+#add-inventory-form input,
+#add-inventory-form textarea,
+#add-inventory-form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Restore number arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+}
+
+/* ---------------------------
+   ADD CLASSIFICATION FORM
+----------------------------*/
+#add-classification-form {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+#add-classification-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+#add-classification-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#add-classification-form input[type="submit"] {
+  padding: 12px;
+  background: #2a6fdb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#add-classification-form input[type="submit"]:hover {
+  background: #1f56ad;
+  transform: translateY(-2px);
+}
+
+/* Required indicators */
 .required {
   color: red;
   font-weight: bold;
@@ -129,14 +219,13 @@ input:required {
 
 input:valid {
   border-left-color: #2ecc71;
-  /* green */
 }
 
 input:invalid {
   border-left-color: #e74c3c;
-  /* red */
 }
 
+/* Password wrapper */
 .password-wrapper {
   display: flex;
   align-items: center;
@@ -149,13 +238,9 @@ input:invalid {
   font-size: 0.8rem;
 }
 
-.password-rules {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-/* *********ITEM VIEW*********** */
-
+/* ---------------------------
+   ITEM VIEW
+----------------------------*/
 .vehicle-list {
   display: flex;
   flex-direction: column;
@@ -171,7 +256,6 @@ input:invalid {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   align-items: flex-start;
 }
-
 
 .vehicle-image {
   width: 350px;
@@ -190,15 +274,11 @@ input:invalid {
   font-size: 1.1rem;
   margin: 0;
   line-height: 1.4;
-} */
-
-.details-link:hover {
-  background: #005fa3;
 }
 
-
-   /* ACCOUNT FORMS (Login/Register) */
-
+/* ---------------------------
+   LOGIN / REGISTER FORMS
+----------------------------*/
 #login main {
   max-width: 450px;
   margin: 70px auto;
@@ -216,16 +296,13 @@ input:invalid {
   color: #222;
 }
 
-/* Shared form layout */
 #login-form,
 #register-form {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  /* more open spacing like example */
 }
 
-/* Labels */
 #login-form label,
 #register-form label {
   display: flex;
@@ -235,12 +312,8 @@ input:invalid {
   font-size: 1rem;
 }
 
-/* Inputs */
-#login-form input[type="email"],
-#login-form input[type="password"],
-#register-form input[type="text"],
-#register-form input[type="email"],
-#register-form input[type="password"] {
+#login-form input,
+#register-form input {
   padding: 14px;
   border: 1px solid #bbb;
   border-radius: 6px;
@@ -254,20 +327,6 @@ input:invalid {
   outline: none;
 }
 
-/* Required indicator */
-.required {
-  color: red;
-  font-weight: bold;
-}
-
-/* Password wrapper (input + Show button) */
-.password-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Show/Hide button */
 .toggle-btn {
   padding: 8px 14px;
   background: #2a6fdb;
@@ -276,14 +335,12 @@ input:invalid {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background 0.2s ease;
 }
 
 .toggle-btn:hover {
   background: #1f56ad;
 }
 
-/* Password rules box */
 .password-rules {
   font-size: 0.95rem;
   background: #f2f2f2;
@@ -293,7 +350,6 @@ input:invalid {
   line-height: 1.4;
 }
 
-/* Submit buttons */
 #login-form .btn-submit,
 #register-form input[type="submit"] {
   padding: 14px;
@@ -303,118 +359,16 @@ input:invalid {
   border-radius: 6px;
   font-size: 1.05rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 #login-form .btn-submit:hover,
 #register-form input[type="submit"]:hover {
   background: #1f56ad;
-  transform: translateY(-2px);
 }
 
-#login-form .btn-submit:active,
-#register-form input[type="submit"]:active {
-  background: #17407f;
-  transform: translateY(0);
-}
-
-/* Register link under login form */
-#login .register-link {
-  text-align: center;
-  margin-top: 18px;
-  font-size: 1rem;
-}
-
-#login .register-link a {
-  color: #2a6fdb;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#login .register-link a:hover {
-  text-decoration: underline;
-}
-
-/* Login View */
-/* LOGIN PAGE ONLY — scoped to #login */
-#login main {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-#login h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-#login .login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#login .login-form label {
-  font-weight: bold;
-  color: #444;
-}
-
-#login .login-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
-}
-
-#login .login-form input:focus {
-  border-color: #2a6fdb;
-  outline: none;
-}
-
-#login .btn-submit {
-  padding: 12px;
-  background: #2a6fdb;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
-}
-
-#login .btn-submit:hover {
-  background: #1f56ad;
-  transform: translateY(-2px);
-}
-
-#login .btn-submit:active {
-  background: #17407f;
-  transform: translateY(0);
-}
-
-#login .register-link {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 0.95rem;
-}
-
-#login .register-link a {
-  color: #2a6fdb;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#login .register-link a:hover {
-  text-decoration: underline;
-}
-/* Classification Grid */
+/* ---------------------------
+   CLASSIFICATION GRID
+----------------------------*/
 #inv-display {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -454,4 +408,68 @@ input:invalid {
   font-size: 1.1rem;
   font-weight: bold;
   color: #0077cc;
+}
+
+/* ---------------------------
+   INVENTORY MANAGEMENT VIEW
+----------------------------*/
+#inventory-management {
+  max-width: 550px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+#inventory-management h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.9rem;
+  color: #222;
+}
+
+#inventory-management .flash-message {
+  margin-bottom: 20px;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+#inventory-management .flash-success {
+  background: #e8f7ec;
+  border-left: 4px solid #2ecc71;
+}
+
+#inventory-management .flash-error {
+  background: #fdecea;
+  border-left: 4px solid #e74c3c;
+}
+
+.inv-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inv-links li a {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: #2a6fdb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.inv-links li a:hover {
+  background: #1f56ad;
+  transform: translateY(-2px);
 }

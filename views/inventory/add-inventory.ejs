@@ -1,0 +1,75 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+
+        <% messages() %>
+        <% if (errors && errors.length> 0) { %>
+            <div class="notice">
+                <ul>
+                    <% errors.forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+            <% } %>
+
+    <form id="add-inventory-form" action="/inv/add-inventory" method="post">
+    
+        <label>
+            Classification <span class="required">*</span>
+            <%- classificationList %>
+        </label>
+    
+        <label>
+            Make <span class="required">*</span>
+            <input type="text" name="inv_make" required value="<%= inv_make %>" placeholder="Min of 3 characters">
+        </label>
+    
+        <label>
+            Model <span class="required">*</span>
+            <input type="text" name="inv_model" required value="<%= inv_model %>" placeholder="Min of 3 characters">
+        </label>
+
+        <label>
+            Year <span class="required">*</span>
+            <input type="number" name="inv_year" required value="<%= inv_year %>" placeholder="4-digit year">
+        </label>
+    
+        <label>
+            Description <span class="required">*</span>
+            <textarea name="inv_description" required><%= inv_description %></textarea>
+        </label>
+    
+        <label>
+            Image Path <span class="required">*</span>
+            <input type="text" name="inv_image" required value="<%= inv_image %>">
+        </label>
+    
+        <label>
+            Thumbnail Path <span class="required">*</span>
+            <input type="text" name="inv_thumbnail" required value="<%= inv_thumbnail %>">
+        </label>
+    
+        <label>
+            Price <span class="required">*</span>
+            <input type="number" name="inv_price" required value="<%= inv_price %>" placeholder="Decimal or Integer">
+        </label>
+    
+    
+        <label>
+            Miles <span class="required">*</span>
+            <input type="number" name="inv_miles" required value="<%= inv_miles %>" placeholder="Digits only">
+        </label>
+    
+        <label>
+            Color <span class="required">*</span>
+            <input type="text" name="inv_color" required value="<%= inv_color %>">
+        </label>
+    
+        <input type="submit" value="Add Vehicle">
+    </form>
+    
