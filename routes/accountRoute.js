@@ -4,7 +4,10 @@ const utilities = require("../utilities/");
 const accountController = require("../controllers/accountController")
 const regValidate = require('../utilities/account-validation')
 
-// Login 
+// Account Management 
+router.get("/", utilities.handleErrors(accountController.buildAccountManager))
+
+// Login
 router.get("/login", utilities.handleErrors(accountController.buildLogin))
 
 //Register
@@ -13,11 +16,17 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 // Process the registration data
 router.post(
   "/register",
-  regValidate.registationRules(),
+  regValidate.registrationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
 
-
+// Process the login request
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
+)
 
 module.exports = router
