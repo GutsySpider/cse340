@@ -1,0 +1,86 @@
+<h1>
+    <%= title %>
+</h1>
+
+<%- messages() %>
+
+    <% if (errors && errors.length> 0) { %>
+        <div class="notice">
+            <ul>
+                <% errors.forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+        <% } %>
+
+            <form id="updateForm" action="/inv/update" method="post">
+
+                <label>
+                    Classification <span class="required">*</span>
+                    <%- classificationList %>
+                </label>
+
+                <label>
+                    Make <span class="required">*</span>
+                    <input type="text" name="inv_make" required value="<%= locals.inv_make || itemData.inv_make %>"
+                        placeholder="Min of 3 characters">
+                </label>
+
+                <label>
+                    Model <span class="required">*</span>
+                    <input type="text" name="inv_model" required value="<%= locals.inv_model || itemData.inv_model %>"
+                        placeholder="Min of 3 characters">
+                </label>
+
+                <label>
+                    Year <span class="required">*</span>
+                    <input type="number" name="inv_year" required value="<%= locals.inv_year || itemData.inv_year %>"
+                        placeholder="4-digit year">
+                </label>
+
+                <label>
+                    Description <span class="required">*</span>
+                    <textarea name="inv_description"
+                        required><%= locals.inv_description || itemData.inv_description %></textarea>
+                </label>
+
+                <label>
+                    Image Path <span class="required">*</span>
+                    <input type="text" name="inv_image" required value="<%= locals.inv_image || itemData.inv_image %>">
+                </label>
+
+                <label>
+                    Thumbnail Path <span class="required">*</span>
+                    <input type="text" name="inv_thumbnail" required
+                        value="<%= locals.inv_thumbnail || itemData.inv_thumbnail %>">
+                </label>
+
+                <label>
+                    Price <span class="required">*</span>
+                    <input type="number" name="inv_price" required value="<%= locals.inv_price || itemData.inv_price %>"
+                        placeholder="Decimal or Integer">
+                </label>
+
+                <label>
+                    Miles <span class="required">*</span>
+                    <input type="number" name="inv_miles" required value="<%= locals.inv_miles || itemData.inv_miles %>"
+                        placeholder="Digits only">
+                </label>
+
+                <label>
+                    Color <span class="required">*</span>
+                    <input type="text" name="inv_color" required value="<%= locals.inv_color || itemData.inv_color %>">
+                </label>
+
+                <input type="hidden" name="inv_id" value="<%= locals.inv_id || itemData.inv_id %>">
+
+                
+                <input type="submit" id="submitBtn" value="Edit Vehicle" disabled>
+
+            </form>
+
+            
+            <script src="/js/inv-update.js"></script>

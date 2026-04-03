@@ -5,7 +5,7 @@ const accountController = require("../controllers/accountController")
 const regValidate = require('../utilities/account-validation')
 
 // Account Management 
-router.get("/", utilities.handleErrors(accountController.buildAccountManager))
+router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManager))
 
 // Login
 router.get("/login", utilities.handleErrors(accountController.buildLogin))

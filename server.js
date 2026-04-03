@@ -16,7 +16,6 @@ const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities/");
-// const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 
 /* ***********************
@@ -34,7 +33,7 @@ const bodyParser = require("body-parser")
  }))
 
  app.use(bodyParser.json())
- app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+ app.use(bodyParser.urlencoded({ extended: true })) 
 
  
  // Express Messages Middleware
@@ -46,7 +45,7 @@ const bodyParser = require("body-parser")
   
   app.use(cookieParser())
   
-  app.use(utilities.checkJWTToken)
+  app.use(require("./utilities").checkJWTToken)
 
 /* ***********************
  * View Engine and Templates
@@ -64,7 +63,7 @@ app.use(static);
 app.get("/", baseController.buildHome) 
 
 // Inventory routes
-app.use("/inv", inventoryRoute)
+app.use("/inv", require("./routes/inventoryRoute"))
 
 // Account Routes
 app.use("/account", require("./routes/accountRoute"))
@@ -73,7 +72,7 @@ app.use("/account", require("./routes/accountRoute"))
 // app.use("/inv/col", itemRoute)
 
 app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
-  res.status(204).end(); // No content, no error
+  res.status(204).end(); 
 });
 
 // File Not Found Route - must be last route in list

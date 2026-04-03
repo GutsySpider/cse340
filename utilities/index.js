@@ -199,13 +199,32 @@ async function checkInventoryData(req, res, next) {
   next()
 }
 
+async function checkUpdateData(req, res, next) {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await Util.getNav()
+    let classificationList = await Util.buildClassificationList(req.body.classification_id)
+    let inv_id
+
+    return res.render("inventory/edit-inventory", {
+      title: "Edit Inventory",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      ...req.body,
+      inv_id
+    })
+  }
+  next()
+}
+
 Util.inventoryRules = inventoryRules
 Util.checkInventoryData = checkInventoryData
 
 async function checkData(req, res, next) {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    let nav = await getNav()
+    let nav = await Util.getNav()
     return res.render("inventory/add-classification", {
       title: "Add Classification",
       nav,
@@ -249,7 +268,7 @@ Util.checkJWTToken = (req, res, next) => {
    process.env.ACCESS_TOKEN_SECRET,
    function (err, accountData) {
     if (err) {
-     req.flash("Please log in")
+     req.flash("error", "Please log in")
      res.clearCookie("jwt")
      return res.redirect("/account/login")
     }
@@ -260,6 +279,20 @@ Util.checkJWTToken = (req, res, next) => {
  } else {
   next()
  }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  console.log("loggedin:", res.locals.loggedin)
+
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("error", "Please log in.")
+    return res.redirect("/account/login")
+  }
 }
 
 module.exports = Util

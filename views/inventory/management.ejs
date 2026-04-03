@@ -12,4 +12,13 @@
             <li><a href="/inv/add-inventory">Add New Inventory Item</a></li>
         </ul>
     </section>
+    <section class="modify-inv">
+        <h2>Manage Inventory</h2>
+        <p>Select a classification from the list to see the items belonging to that classification</p>
+        <%- classificationList %>
+        <table id="inventoryDisplay"></table>
+        <noscript>JavaScript must be enabled to use this page.</noscript>
+    </section>
 </main>
+
+<script src="../../js/inventory.js"></script>
