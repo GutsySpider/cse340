@@ -101,6 +101,7 @@ validate.checkInventoryData = async function (req, res, next) {
   next()
 }
 
+
 /* ******************************
  * Check Update Data and Return Errors to Edit View
  ****************************** */

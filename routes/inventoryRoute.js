@@ -12,7 +12,8 @@ const itemController = require("../controllers/itemController")
 const invValidate = require("../utilities/inventory-validation")
 
 // Management view
-router.get("/", utilities.handleErrors(invController.buildManagement))
+router.get("/", utilities.checkEmployeeOrAdmin
+,utilities.handleErrors(invController.buildManagement))
 
 // Classification route
 router.get("/type/:classificationId", invController.buildByClassificationId)
@@ -22,6 +23,7 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 
 // Deliver add classification view
 router.get("/add-classification",
+  utilities.checkEmployeeOrAdmin,
   utilities.handleErrors(invController.buildAddClassification)
 )
 
@@ -30,34 +32,50 @@ router.post(
   "/add-classification",
   classificationRules(),
   checkData,
+  utilities.checkEmployeeOrAdmin,
   utilities.handleErrors(invController.addClassification)
 )
 
-// // Update item route
-// router.post("/update/", utilities.handleErrors(invController.updateInventory))
-
 // Item detail route
-router.get("/detail/:inv_id", itemController.buildByInventoryId)
+router.get("/detail/:inv_id",
+utilities.handleErrors(itemController.buildByInventoryId))
 
 // Intentional 500 error route
 router.get("/cause-error", itemController.throwError)
 
 // Deliver add inventory view
-router.get("/add-inventory",
+router.get("/add-inventory",utilities.checkEmployeeOrAdmin
+,
   utilities.handleErrors(invController.buildAddInventory)
 )
 
 // Deliver edit inventory view
 router.get(
-  "/edit/:inv_id",
+  "/edit/:inv_id", utilities.checkEmployeeOrAdmin
+,
   utilities.handleErrors(invController.buildEditInventory)
+);
+
+// Deliver delete inventory confirmation view
+router.get(
+  "/delete/:inv_id", utilities.checkEmployeeOrAdmin
+,
+  utilities.handleErrors(invController.buildDeleteInventory)
+);
+
+// Process inventory delete
+router.post(
+  "/delete", utilities.checkEmployeeOrAdmin
+,
+  utilities.handleErrors(invController.deleteInventory)
 );
 
 // Process inventory insert
 router.post(
   "/add-inventory",
   inventoryRules(),
-  checkInventoryData,
+  checkInventoryData, utilities.checkEmployeeOrAdmin
+,
   utilities.handleErrors(invController.addInventory)
 )
 
@@ -65,7 +83,8 @@ router.post(
 router.post(
   "/update",
   invValidate.newInventoryRules(),
-  invValidate.checkUpdateData,
+  invValidate.checkUpdateData, utilities.checkEmployeeOrAdmin
+,
   utilities.handleErrors(invController.updateInventory)
 )
 

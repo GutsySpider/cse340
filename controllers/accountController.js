@@ -40,6 +40,22 @@ async function buildAccountManager(req, res, next) {
 }
 
 /* ****************************************
+*  Deliver Update Account view
+* *************************************** */
+async function buildUpdateAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const account_id = req.params.account_id
+  const accountData = await accountModel.getAccountById(account_id)
+
+  res.render("account/update", {
+    title: "Update Account Information",
+    nav,
+    accountData,
+    errors: null
+  })
+}
+
+/* ****************************************
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
@@ -139,10 +155,110 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ****************************************
+ *  Process Account Info Update
+ **************************************** */
+async function updateAccount(req, res, next) {
+  const nav = await utilities.getNav();
+  const { account_id, account_firstname, account_lastname, account_email } = req.body;
+
+  try {
+    const updateResult = await accountModel.updateAccount(
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email
+    );
+
+    // Reload updated account data
+    const accountData = await accountModel.getAccountById(account_id);
+
+    if (updateResult) {
+      req.flash("info", "Account information updated successfully.");
+    } else {
+      req.flash("error", "Update failed. Please try again.");
+    }
+
+    return res.render("account/account-management", {
+  title: "Account Management",
+  nav,
+  accountData
+});
+
+  } catch (error) {
+    console.error("Update account error:", error);
+
+    const accountData = await accountModel.getAccountById(account_id);
+
+    req.flash("error", "An unexpected error occurred.");
+
+    return res.render("account/account-management", {
+  title: "Account Management",
+  nav,
+  accountData
+});
+  }
+}
+
+async function updatePassword(req, res, next) {
+  const nav = await utilities.getNav();
+  const { account_id, account_password } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(account_password, 10);
+
+    const updateResult = await accountModel.updatePassword(
+      account_id,
+      hashedPassword
+    );
+
+    const accountData = await accountModel.getAccountById(account_id);
+
+    if (updateResult) {
+      req.flash("info", "Password updated successfully.");
+    } else {
+      req.flash("error", "Password update failed.");
+    }
+
+    return res.render("account/account-management", {
+  title: "Account Management",
+  nav,
+  accountData
+});
+
+  } catch (error) {
+    console.error("Password update error:", error);
+
+    const accountData = await accountModel.getAccountById(account_id);
+
+    req.flash("error", "An unexpected error occurred.");
+
+    return res.render("account/account-management", {
+  title: "Account Management",
+  nav,
+  accountData
+});
+  }
+}
+
+/* ****************************************
+ *  Process Logout
+ **************************************** */
+async function logout(req, res, next) {
+  res.clearCookie("jwt")        // remove the token cookie
+  req.flash("info", "You have been logged out.")
+  return res.redirect("/")      // send client back to home view
+}
+
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
-  buildAccountManager
+  buildAccountManager,
+  buildUpdateAccount,
+  updatePassword,
+  updateAccount,
+  logout
 }

@@ -1,0 +1,75 @@
+<body id="update">
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <%- messages() %>
+
+            <% if (errors && errors.length> 0) { %>
+                <ul class="notice">
+                    <% errors.forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <fieldset>
+                    <form id="update-form" action="/account/update" method="post">
+
+                        <label>
+                            First Name <span class="required">*</span>
+                            <input type="text" name="account_firstname" required autocomplete="given-name"
+                                title="Your First Name" value="<%= accountData.account_firstname %>">
+                        </label>
+
+                        <label>
+                            Last Name <span class="required">*</span>
+                            <input type="text" name="account_lastname" required autocomplete="family-name"
+                                title="Your Last Name" value="<%= accountData.account_lastname %>">
+                        </label>
+
+                        <label>
+                            Email <span class="required">*</span>
+                            <input type="email" name="account_email" required placeholder="john89@gmail.com"
+                                autocomplete="email" title="Your Email" value="<%= accountData.account_email %>">
+                        </label>
+
+                        <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+                        <input type="submit" value="Update Account Information">
+                    </form>
+                    </fieldset>
+
+                    <fieldset>
+                    <form id="password-update-form" action="/account/update/password" method="post">
+
+                        <label>
+                            New Password <span class="required">*</span>
+                            <div class="password-wrapper">
+                                <input type="password" name="account_password" id="account_password" required
+                                    title="Enter a new password" autocomplete="new-password"
+                                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                                <button type="button" id="togglePassword" class="toggle-btn">Show</button>
+                            </div>
+                        </label>
+
+                        <div class="password-rules">
+                            <p><strong>Password must:</strong></p>
+                            <ul>
+                                <li>Be at least 12 characters long</li>
+                                <li>Contain at least 1 capital letter</li>
+                                <li>Contain at least 1 number</li>
+                                <li>Contain at least 1 special character</li>
+                            </ul>
+                        </div>
+
+                        <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+                        <input type="submit" value="Change Password">
+                    </form>
+                    </fieldset>
+    </main>
+</body>

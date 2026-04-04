@@ -3,6 +3,7 @@ require("dotenv").config()
 const invModel = require("../models/inventory-model")
 const Util = {}
 
+
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
@@ -199,25 +200,6 @@ async function checkInventoryData(req, res, next) {
   next()
 }
 
-async function checkUpdateData(req, res, next) {
-  const errors = validationResult(req)
-  if (!errors.isEmpty()) {
-    let nav = await Util.getNav()
-    let classificationList = await Util.buildClassificationList(req.body.classification_id)
-    let inv_id
-
-    return res.render("inventory/edit-inventory", {
-      title: "Edit Inventory",
-      nav,
-      classificationList,
-      errors: errors.array(),
-      ...req.body,
-      inv_id
-    })
-  }
-  next()
-}
-
 Util.inventoryRules = inventoryRules
 Util.checkInventoryData = checkInventoryData
 
@@ -279,6 +261,36 @@ Util.checkJWTToken = (req, res, next) => {
  } else {
   next()
  }
+}
+
+/* ****************************************
+ *  Check for Employee or Admin Access
+ **************************************** */
+Util.checkEmployeeOrAdmin = function (req, res, next) {
+  // If no account data, user is not logged in
+  if (!res.locals.accountData) {
+    req.flash("notice", "Please log in to access this page.")
+    return res.status(401).render("account/login", {
+      title: "Login",
+      nav: res.locals.nav,
+      errors: null
+    })
+  }
+
+  const type = res.locals.accountData.account_type
+
+  // Only allow Employee or Admin
+  if (type === "Employee" || type === "Admin") {
+    return next()
+  }
+
+  // Otherwise deny access
+  req.flash("notice", "You do not have permission to access this area.")
+  return res.status(403).render("account/login", {
+    title: "Login",
+    nav: res.locals.nav,
+    errors: null
+  })
 }
 
 /* ****************************************

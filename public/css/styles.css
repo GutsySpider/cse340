@@ -1,35 +1,38 @@
-/******* Change Box Model ***************/
+/******* GLOBAL RESET & BOX MODEL ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/* Header */
+/******* HEADER ***************/
 #top-header {
   padding-bottom: 20px;
 }
 
-#tools a {
+#tools a,
+.siteName a {
   text-decoration: none;
   color: black;
 }
 
 .siteName a {
-  text-decoration: none;
-  color: black;
   font-size: 22px;
 }
 
-/* Navigation */
+#tools {
+  float: right;
+}
+
+/******* NAVIGATION ***************/
 .navigation {
   background-color: rgb(5, 5, 56);
   padding: 1px;
 }
 
 .navigation ul {
-  justify-content: space-between;
   display: flex;
+  justify-content: space-between;
   list-style: none;
   margin: 10px;
   padding-left: 0;
@@ -45,7 +48,12 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* Delorean legacy styles */
+/******* HERO / LEGACY DELOREAN ***************/
+.hero img {
+  width: 100%;
+  height: 100%;
+}
+
 .deloreanCard {
   width: 170px;
   font-size: 12px;
@@ -72,32 +80,14 @@ nav ul li a:hover {
   padding-left: 15px;
 }
 
-/* Upgrades */
-#upgrades li {
-  display: flex;
-}
-
-#tools {
-  float: right;
-}
-
-#wrapper {
-  border: none;
-}
-
-.hero img {
-  width: 100%;
-  height: 100%;
-}
-
-.carInfo {
-  display: flex;
-  flex-direction: column;
-}
-
+/******* UPGRADES ***************/
 #upgrades {
   align-items: center;
   order: 2;
+}
+
+#upgrades li {
+  display: flex;
 }
 
 #upgrades div {
@@ -119,6 +109,7 @@ nav ul li a:hover {
   color: white;
 }
 
+/******* REVIEWS ***************/
 #reviews {
   order: 1;
 }
@@ -127,34 +118,33 @@ nav ul li a:hover {
   font-size: 20px;
 }
 
-/* ---------------------------
-   ADD INVENTORY FORM
-----------------------------*/
-#add-inventory-form {
-  max-width: 450px;
-  margin: 70px auto;
-  padding: 35px;
+/******* UNIVERSAL CARD STYLE ***************/
+.card {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  padding: 35px;
   font-family: Arial, sans-serif;
+  margin: 70px auto;
 }
 
-#add-inventory-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-#add-inventory-form input,
-#add-inventory-form textarea,
-#add-inventory-form select {
+/******* FORM ELEMENT BASE ***************/
+input,
+textarea,
+select {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 14px;
   border: 1px solid #bbb;
   border-radius: 6px;
   font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2a6fdb;
+  outline: none;
 }
 
 /* Restore number arrows */
@@ -163,51 +153,34 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: auto;
 }
 
-/* ---------------------------
-   ADD CLASSIFICATION FORM
-----------------------------*/
-#add-classification-form {
-  max-width: 450px;
-  margin: 70px auto;
-  padding: 35px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: Arial, sans-serif;
-}
-
-#add-classification-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-#add-classification-form input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-#add-classification-form input[type="submit"] {
-  padding: 12px;
+/******* SUBMIT BUTTONS ***************/
+.btn-primary,
+input[type="submit"],
+button[type="submit"] {
+  padding: 14px;
   background: #2a6fdb;
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
-#add-classification-form input[type="submit"]:hover {
+.btn-primary:hover,
+input[type="submit"]:hover:not([disabled]),
+button[type="submit"]:hover:not([disabled]) {
   background: #1f56ad;
   transform: translateY(-2px);
 }
 
-/* Required indicators */
+input[type="submit"][disabled] {
+  background: #9bb7e0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/******* REQUIRED FIELD INDICATORS ***************/
 .required {
   color: red;
   font-weight: bold;
@@ -225,7 +198,7 @@ input:invalid {
   border-left-color: #e74c3c;
 }
 
-/* Password wrapper */
+/******* PASSWORD RULES ***************/
 .password-wrapper {
   display: flex;
   align-items: center;
@@ -246,7 +219,6 @@ input:invalid {
   background: #1f56ad;
 }
 
-/* Password rules */
 .password-rules {
   font-size: 0.95rem;
   background: #f2f2f2;
@@ -256,47 +228,7 @@ input:invalid {
   line-height: 1.4;
 }
 
-/* ---------------------------
-   ITEM VIEW
-----------------------------*/
-.vehicle-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.vehicle-card {
-  gap: 2rem;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  align-items: flex-start;
-}
-
-.vehicle-image {
-  width: 350px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.vehicle-info h2 {
-  font-size: 2rem;
-  margin: 0;
-  font-weight: 700;
-}
-
-.vehicle-info p {
-  font-size: 1.1rem;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* ---------------------------
-   LOGIN / REGISTER FORMS
-----------------------------*/
+/******* LOGIN / REGISTER ***************/
 #login main {
   max-width: 450px;
   margin: 70px auto;
@@ -304,7 +236,6 @@ input:invalid {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: Arial, sans-serif;
 }
 
 #login main h1 {
@@ -327,43 +258,63 @@ input:invalid {
   flex-direction: column;
   font-weight: bold;
   color: #333;
-  font-size: 1rem;
 }
 
-#login-form input,
-#register-form input {
-  padding: 14px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
+/******* ADD INVENTORY FORM ***************/
+#add-inventory-form {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-#login-form input:focus,
-#register-form input:focus {
-  border-color: #2a6fdb;
-  outline: none;
+/******* ADD CLASSIFICATION FORM ***************/
+#add-classification-form {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-#login-form .btn-submit,
-#register-form input[type="submit"] {
-  padding: 14px;
-  background: #2a6fdb;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.05rem;
-  cursor: pointer;
+/******* ITEM VIEW ***************/
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
 }
 
-#login-form .btn-submit:hover,
-#register-form input[type="submit"]:hover {
-  background: #1f56ad;
+.vehicle-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  gap: 2rem;
 }
 
-/* ---------------------------
-   CLASSIFICATION GRID
-----------------------------*/
+.vehicle-image {
+  width: 350px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.vehicle-info h2 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.vehicle-info p {
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/******* CLASSIFICATION GRID ***************/
 #inv-display {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -405,9 +356,7 @@ input:invalid {
   color: #0077cc;
 }
 
-/* ---------------------------
-   INVENTORY LINKS
-----------------------------*/
+/******* INVENTORY LINKS ***************/
 .inv-links {
   max-width: 750px;
   margin: 40px auto 30px;
@@ -415,13 +364,11 @@ input:invalid {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: Arial, sans-serif;
 }
 
 .inv-links ul {
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -444,9 +391,7 @@ input:invalid {
   transform: translateY(-2px);
 }
 
-/* ---------------------------
-   MODIFY INVENTORY SECTION
-----------------------------*/
+/******* MODIFY INVENTORY ***************/
 .modify-inv {
   max-width: 750px;
   margin: 50px auto;
@@ -454,31 +399,26 @@ input:invalid {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: Arial, sans-serif;
 }
 
 .modify-inv h2 {
   text-align: center;
   margin-bottom: 15px;
   font-size: 1.7rem;
-  color: #222;
 }
 
 .modify-inv p {
   text-align: center;
   margin-bottom: 25px;
   color: #444;
-  font-size: 1rem;
 }
 
 .modify-inv select {
-  display: block;
   width: 100%;
   padding: 12px;
   margin-bottom: 25px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
   background: #fafafa;
 }
 
@@ -494,7 +434,6 @@ input:invalid {
   padding: 14px;
   border-bottom: 1px solid #e0e0e0;
   text-align: left;
-  font-size: 1rem;
 }
 
 #inventoryDisplay th {
@@ -516,9 +455,7 @@ input:invalid {
   text-decoration: underline;
 }
 
-/* ---------------------------
-   EDIT INVENTORY FORM (UPDATED)
-----------------------------*/
+/******* EDIT INVENTORY ***************/
 #updateForm {
   max-width: 550px;
   margin: 70px auto;
@@ -526,35 +463,9 @@ input:invalid {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   gap: 22px;
-}
-
-#updateForm label {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  color: #333;
-  font-size: 1rem;
-}
-
-#updateForm input,
-#updateForm textarea,
-#updateForm select {
-  padding: 14px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.2s ease;
-}
-
-#updateForm input:focus,
-#updateForm textarea:focus,
-#updateForm select:focus {
-  border-color: #2a6fdb;
-  outline: none;
 }
 
 #updateForm textarea {
@@ -562,9 +473,37 @@ input:invalid {
   resize: vertical;
 }
 
-#updateForm input[type="submit"] {
+/******* DELETE INVENTORY ***************/
+#deleteForm {
+  max-width: 550px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#deleteForm label p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #b30000;
+  font-weight: 700;
+}
+
+#deleteForm input[readonly] {
+  background: #f5f5f5;
+  border: 1px solid #bbb;
   padding: 14px;
-  background: #2a6fdb;
+  border-radius: 6px;
+  color: #555;
+}
+
+#deleteBtn {
+  padding: 14px;
+  background: #b30000;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -573,18 +512,12 @@ input:invalid {
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
-#updateForm input[type="submit"]:hover:not([disabled]) {
-  background: #1f56ad;
+#deleteBtn:hover {
+  background: #8a0000;
   transform: translateY(-2px);
 }
 
-#updateForm input[type="submit"][disabled] {
-  background: #9bb7e0;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-/* Error message styling */
+/******* ERROR / NOTICE ***************/
 .notice {
   background: #fdecea;
   border-left: 4px solid #e74c3c;
@@ -596,4 +529,76 @@ input:invalid {
 .notice ul {
   margin: 0;
   padding-left: 20px;
+}
+
+/******* ACCOUNT UPDATE VIEW ***************/
+#update main {
+  max-width: 550px;
+  margin: 70px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  font-family: Arial, sans-serif;
+}
+
+#update main h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.9rem;
+  color: #222;
+}
+
+#update fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+#update-form,
+#password-update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#update-form label,
+#password-update-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #333;
+}
+
+#update-form input,
+#password-update-form input {
+  padding: 14px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+#update-form input:focus,
+#password-update-form input:focus {
+  border-color: #2a6fdb;
+  outline: none;
+}
+
+#update-form input[type="submit"],
+#password-update-form input[type="submit"] {
+  padding: 14px;
+  background: #2a6fdb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+#update-form input[type="submit"]:hover,
+#password-update-form input[type="submit"]:hover {
+  background: #1f56ad;
+  transform: translateY(-2px);
 }

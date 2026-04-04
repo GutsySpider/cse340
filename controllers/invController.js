@@ -55,13 +55,16 @@ invCont.addClassification = async function (req, res, next) {
   let nav = await utilities.getNav()
 
   if (result) {
-    req.flash("notice", `${classification_name} successfully added.`)
-    return res.status(201).render("inventory/management", {
-      title: "Inventory Management",
-      nav,
-      errors: null
-    })
-  } else {
+  req.flash("notice", `${classification_name} successfully added.`)
+  let classificationList = await utilities.buildClassificationList()
+
+  return res.status(201).render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    classificationList,
+    errors: null
+  })
+} else {
     req.flash("notice", "Failed to add classification.")
     return res.status(500).render("inventory/add-classification", {
       title: "Add Classification",
@@ -128,13 +131,16 @@ invCont.addInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
 
   if (result) {
-    req.flash("notice", `${inv_make} ${inv_model} added successfully.`)
-    return res.status(201).render("inventory/management", {
-      title: "Inventory Management",
-      nav,
-      errors: null
-    })
-  } else {
+  req.flash("notice", `${inv_make} ${inv_model} added successfully.`)
+  let classificationList = await utilities.buildClassificationList()
+
+  return res.status(201).render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    classificationList,
+    errors: null
+  })
+} else {
     req.flash("notice", "Failed to add inventory item.")
     let classificationList = await utilities.buildClassificationList(classification_id)
 
@@ -243,5 +249,55 @@ invCont.buildEditInventory = async function (req, res, next) {
     itemData
   })
 }
+
+/* ***************************
+ *  Return Inventory as JSON
+ ************************** */
+invCont.getInventoryJSON = async function (req, res, next) {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  return res.json(invData)
+}
+
+/* ***************************
+ *  Build Delete Inventory View
+ ************************** */
+invCont.buildDeleteInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  let nav = await utilities.getNav()
+
+  const itemData = await invModel.getInventoryById(inv_id)
+
+  if (!itemData) {
+    req.flash("notice", "Inventory item not found.")
+    return res.redirect("/inv/")
+  }
+
+  res.render("inventory/delete-inventory", {
+    title: "Delete " + itemData.inv_make + " " + itemData.inv_model,
+    nav,
+    errors: null,
+    itemData
+  })
+}
+
+/* ***************************
+ *  Delete Inventory Data
+ ************************** */
+invCont.deleteInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.body.inv_id)
+  let nav = await utilities.getNav()
+
+  const deleteResult = await invModel.deleteInventory(inv_id)
+
+  if (deleteResult) {
+    req.flash("notice", "The item was successfully deleted.")
+    return res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the delete failed.")
+    return res.redirect(`/inv/delete/${inv_id}`)
+  }
+}
+
 
 module.exports = invCont
