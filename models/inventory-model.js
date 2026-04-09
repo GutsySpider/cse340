@@ -50,6 +50,20 @@ async function getInventoryById(inv_id) {
   }
 }
 
+/* ***************************
+ *  Get all inventory items for comparing
+ * ************************** */
+async function getAllInventory() {
+  try {
+    const sql = "SELECT inv_id, inv_make, inv_model FROM inventory ORDER BY inv_make, inv_model";
+    const result = await pool.query(sql);
+    return result.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
 async function addInventory(
   classification_id,
   inv_make,
@@ -142,6 +156,22 @@ async function deleteInventory(inv_id) {
   }
 }
 
+/* ***************************
+ *  Get two vehicle id's to compare
+ * ************************** */
+async function getTwoVehicles(id1, id2) {
+  try {
+    const sql = `
+      SELECT * FROM inventory 
+      WHERE inv_id = $1 OR inv_id = $2
+      ORDER BY inv_id;
+    `;
+    const result = await pool.query(sql, [id1, id2]);
+    return result.rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
-module.exports = { getClassifications, getInventoryByClassificationId, addClassification, addInventory, getInventoryById, updateInventory, deleteInventory };
+module.exports = { getClassifications, getInventoryByClassificationId, addClassification, addInventory, getInventoryById, updateInventory, deleteInventory, getAllInventory, getTwoVehicles };
 

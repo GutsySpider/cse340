@@ -36,6 +36,20 @@ router.post(
   utilities.handleErrors(invController.addClassification)
 )
 
+// Deliver compare view
+router.get(
+  "/compare",
+  utilities.handleErrors(invController.buildCompareView)
+);
+
+//process vehicle compare
+router.post(
+  "/compare",
+  invValidate.compareRules(),
+  invValidate.checkCompareData,
+  utilities.handleErrors(invController.compareVehicles)
+);
+
 // Item detail route
 router.get("/detail/:inv_id",
 utilities.handleErrors(itemController.buildByInventoryId))

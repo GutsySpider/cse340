@@ -45,6 +45,50 @@ invCont.buildAddClassification = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Deliver compare form view
+ * ************************** */
+invCont.buildCompareView = async function (req, res) {
+  const nav = await utilities.getNav();
+  const vehicles = await invModel.getAllInventory();
+
+  res.render("inventory/compare-select", {
+    title: "Compare Vehicles",
+    nav,
+    vehicles,
+    errors: null,
+    message: req.flash("notice")
+  });
+};
+
+/* ***************************
+ *  Deliver results of form view
+ * ************************** */
+invCont.compareVehicles = async function (req, res) {
+  const nav = await utilities.getNav();
+  const { vehicle1, vehicle2 } = req.body;
+
+  try {
+    const results = await invModel.getTwoVehicles(vehicle1, vehicle2);
+
+    if (results.length < 2) {
+      req.flash("notice", "Please select two different vehicles.");
+      return res.redirect("/inv/compare");
+    }
+
+    res.render("inventory/compare-results", {
+      title: "Vehicle Comparison",
+      nav,
+      vehicles: results,
+      message: null
+    });
+
+  } catch (error) {
+    req.flash("notice", "Comparison failed. Try again.");
+    res.redirect("/inv/compare");
+  }
+};
+
 /* ****************************************
 *  Insert New Classification
 **************************************** */

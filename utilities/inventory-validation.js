@@ -1,4 +1,5 @@
 const utilities = require(".")
+const invModel = require("../models/inventory-model")
 const { body, validationResult } = require("express-validator")
 
 const validate = {}
@@ -101,7 +102,6 @@ validate.checkInventoryData = async function (req, res, next) {
   next()
 }
 
-
 /* ******************************
  * Check Update Data and Return Errors to Edit View
  ****************************** */
@@ -142,6 +142,41 @@ validate.checkUpdateData = async function (req, res, next) {
       inv_price,
       inv_miles,
       inv_color
+    })
+  }
+
+  next()
+}
+
+/* ******************************
+ * Comparison Tool Validation Rules
+ ****************************** */
+validate.compareRules = () => {
+  return [
+    body("vehicle1")
+      .isInt().withMessage("Please select a valid first vehicle."),
+    body("vehicle2")
+      .isInt().withMessage("Please select a valid second vehicle.")
+  ]
+}
+
+/* ******************************
+ * Check Compare Data
+ ****************************** */
+validate.checkCompareData = async (req, res, next) => {
+  const { vehicle1, vehicle2 } = req.body
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty() || vehicle1 === vehicle2) {
+    const nav = await utilities.getNav()
+    const vehicles = await invModel.getAllInventory()
+
+    return res.render("inventory/compare-select", {
+      title: "Compare Vehicles",
+      nav,
+      vehicles,
+      errors: errors.array(),
+      message: "Please select two different vehicles."
     })
   }
 

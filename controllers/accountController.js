@@ -245,9 +245,9 @@ async function updatePassword(req, res, next) {
  *  Process Logout
  **************************************** */
 async function logout(req, res, next) {
-  res.clearCookie("jwt")        // remove the token cookie
+  res.clearCookie("jwt")        
   req.flash("info", "You have been logged out.")
-  return res.redirect("/")      // send client back to home view
+  return res.redirect("/")      
 }
 
 

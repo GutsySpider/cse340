@@ -602,3 +602,88 @@ input:invalid {
   background: #1f56ad;
   transform: translateY(-2px);
 }
+
+/* ================================
+   Comparison Results Layout
+   ================================ */
+
+.comparison-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #222;
+}
+
+/* ================================
+   Comparison Table
+   ================================ */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.comparison-table thead th {
+  background: #005bbb;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.comparison-table td,
+.comparison-table th {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.comparison-table tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+.comparison-table tbody tr:hover {
+  background: #e9f3ff;
+}
+
+/* ================================
+   Mobile Responsive
+   ================================ */
+
+  .comparison-table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  .comparison-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .comparison-table td:last-child {
+    border-bottom: none;
+  }
+
+  .comparison-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+  }
+}

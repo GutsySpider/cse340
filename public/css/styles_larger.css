@@ -1,15 +1,25 @@
 @media only screen and (min-width: 38rem) {
 
-    header, main, nav, footer {
+    /* ================================
+     Global Layout
+     ================================ */
+    header,
+    main,
+    nav,
+    footer {
         max-width: 900px;
         margin: 0 auto;
     }
+
     body {
         background-image: url("/images/site/small_check.jpg");
         background-size: cover;
         background-attachment: fixed;
     }
 
+    /* ================================
+     Delorean Card (Legacy Assignment)
+     ================================ */
     .deloreanCard {
         width: 250px;
         font-size: 20px;
@@ -21,6 +31,9 @@
         background-color: rgba(232, 232, 244, 0.799);
     }
 
+    /* ================================
+     Wrapper
+     ================================ */
     #wrapper {
         padding: 25px;
         margin: 15px auto;
@@ -28,25 +41,62 @@
         background-color: aliceblue;
         border: 5px solid cadetblue;
         border-radius: 10px;
-        }
-   .carInfo {
-       display: grid;
-       grid-template-columns: 1fr 1fr;
-       gap: 30px;
-       margin-top: 40px;
-   }
+    }
 
-   #upgrades {
-    order:1
-   }
+    /* ================================
+     Car Info Grid
+     ================================ */
+    .carInfo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 40px;
+    }
 
-   #reviews {
-    order:2
-   }
+    #upgrades {
+        order: 1;
+    }
 
-   .vehicle-card {
-    display: flex;
-    
-   }
+    #reviews {
+        order: 2;
+    }
 
+    /* ================================
+     Vehicle Card (Inventory Item View)
+     ================================ */
+    .vehicle-card {
+        display: flex;
+    }
+
+    /* ================================
+     Comparison Table (Desktop Layout)
+     ================================ */
+    .comparison-table thead {
+        display: table-header-group;
+    }
+
+    .comparison-table tr {
+        display: table-row;
+        border: none;
+    }
+
+    .comparison-table td,
+    .comparison-table th {
+        display: table-cell;
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .comparison-table td::before {
+        content: "";
+    }
+
+    .comparison-table tbody tr:nth-child(even) {
+        background: #f7f7f7;
+    }
+
+    .comparison-table tbody tr:hover {
+        background: #e9f3ff;
+    }
 }

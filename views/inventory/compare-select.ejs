@@ -1,0 +1,58 @@
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+
+    <% messages() %>
+        <% if (errors && errors.length> 0) { %>
+            <div class="notice">
+                <ul>
+                    <% errors.forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+            <% } %>
+     
+
+                <form action="/inv/compare" method="POST">
+
+                    <!-- Vehicle 1 -->
+                    <label for="vehicle1">Vehicle 1</label>
+                    <select name="vehicle1" id="vehicle1" required>
+                        <option value="">Select a vehicle</option>
+
+                        <% if (vehicles && vehicles.length> 0) { %>
+                            <% vehicles.forEach(v=> { %>
+                                <option value="<%= v.inv_id %>">
+                                    <%= v.inv_make %>
+                                        <%= v.inv_model %>
+                                </option>
+                                <% }) %>
+                                    <% } else { %>
+                                        <option disabled>No vehicles found</option>
+                                        <% } %>
+                    </select>
+
+                    <!-- Vehicle 2 -->
+                    <label for="vehicle2">Vehicle 2</label>
+                    <select name="vehicle2" id="vehicle2" required>
+                        <option value="">Select a vehicle</option>
+
+                        <% if (vehicles && vehicles.length> 0) { %>
+                            <% vehicles.forEach(v=> { %>
+                                <option value="<%= v.inv_id %>">
+                                    <%= v.inv_make %>
+                                        <%= v.inv_model %>
+                                </option>
+                                <% }) %>
+                                    <% } else { %>
+                                        <option disabled>No vehicles found</option>
+                                        <% } %>
+                    </select>
+
+                    <button type="submit">Compare</button>
+                </form>
