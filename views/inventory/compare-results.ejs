@@ -21,40 +21,45 @@
             </tr>
         </thead>
     
-        <tbody>
-            <tr>
-                <td>Price</td>
-                <td>$<%= vehicles[0].inv_price %>
-                </td>
-                <td>$<%= vehicles[1].inv_price %>
-                </td>
-            </tr>
-            <tr>
-                <td>Mileage</td>
-                <td>
-                    <%= vehicles[0].inv_miles %> miles
-                </td>
-                <td>
-                    <%= vehicles[1].inv_miles %> miles
-                </td>
-            </tr>
-            <tr>
-                <td>Color</td>
-                <td>
-                    <%= vehicles[0].inv_color %>
-                </td>
-                <td>
-                    <%= vehicles[1].inv_color %>
-                </td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td>
-                    <%= vehicles[0].inv_description %>
-                </td>
-                <td>
-                    <%= vehicles[1].inv_description %>
-                </td>
-            </tr>
-        </tbody>
+    <tbody>
+        <tr>
+            <td data-label="Feature">Price</td>
+            <td data-label="<%= vehicles[0].inv_make %> <%= vehicles[0].inv_model %>">
+                $<%= vehicles[0].inv_price %>
+            </td>
+            <td data-label="<%= vehicles[1].inv_make %> <%= vehicles[1].inv_model %>">
+                $<%= vehicles[1].inv_price %>
+            </td>
+        </tr>
+    
+        <tr>
+            <td data-label="Feature">Mileage</td>
+            <td data-label="<%= vehicles[0].inv_make %> <%= vehicles[0].inv_model %>">
+                <%= vehicles[0].inv_miles %> miles
+            </td>
+            <td data-label="<%= vehicles[1].inv_make %> <%= vehicles[1].inv_model %>">
+                <%= vehicles[1].inv_miles %> miles
+            </td>
+        </tr>
+    
+        <tr>
+            <td data-label="Feature">Color</td>
+            <td data-label="<%= vehicles[0].inv_make %> <%= vehicles[0].inv_model %>">
+                <%= vehicles[0].inv_color %>
+            </td>
+            <td data-label="<%= vehicles[1].inv_make %> <%= vehicles[1].inv_model %>">
+                <%= vehicles[1].inv_color %>
+            </td>
+        </tr>
+    
+        <tr>
+            <td data-label="Feature">Description</td>
+            <td data-label="<%= vehicles[0].inv_make %> <%= vehicles[0].inv_model %>">
+                <%= vehicles[0].inv_description %>
+            </td>
+            <td data-label="<%= vehicles[1].inv_make %> <%= vehicles[1].inv_model %>">
+                <%= vehicles[1].inv_description %>
+            </td>
+        </tr>
+    </tbody>
     </table>
